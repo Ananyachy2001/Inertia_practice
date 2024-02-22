@@ -14,8 +14,19 @@ use inertia\inertia;
 */
 
 Route::get('/', function () {
-    return inertia::render('Home',[
-        'name' => 'Jeffrey Way',
-        'frameworks' => ['Laravel', 'Vue', 'Inertia'],
-    ]);
+    return inertia::render('Home');
 });
+
+Route::get('/users', function () {
+
+    // sleep(2);
+
+
+    return inertia::render('Users');
+});
+
+Route::get('/settings', function () {
+    return inertia::render('Settings');
+});
+
+
