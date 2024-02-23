@@ -4,6 +4,9 @@ import Nav from "./Nav.vue"
 defineProps({
 
     components: {Nav},
+
+
+
 })
 
 </script>
@@ -15,7 +18,11 @@ defineProps({
 
 
         <header class="flex justify-between">
-        <h1 class="font-bold text-lg">My App</h1>
+        <div class="flex items-center">
+            <h1 class="font-bold text-lg">My App</h1>
+
+        <p class="text-sm ml-5"> Welcome to our home {{ $page.props.auth.user.username }}</p>
+        </div>
         <Nav />
         </header>
 
