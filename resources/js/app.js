@@ -16,6 +16,14 @@ createInertiaApp({
     },
 })
 
+// Vite
+resolve: name => {
+  const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+  return pages[`./Pages/${name}.vue`]
+},
+
+
+
 
 router.on('start', () => {
     timeout = setTimeout(() => NProgress.start(), 1)
