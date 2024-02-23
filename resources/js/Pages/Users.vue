@@ -1,11 +1,12 @@
 <script setup>
 
 import Layout from '../Shared/Layout.vue';
+import { Link } from '@inertiajs/vue3';
 
 defineProps({
-    components: { Layout },
+    components: { Layout, Link },
 
-    props: { time: String },
+   time: String,
 
 })
 

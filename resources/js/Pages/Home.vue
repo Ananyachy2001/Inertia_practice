@@ -3,10 +3,7 @@
 
 import Layout from '../Shared/Layout.vue';
 
-defineProps({
-    components: { Layout },
-    
-})
+
 
 </script>
 
