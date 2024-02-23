@@ -7,7 +7,7 @@ defineProps({
     components: {Link},
 
     
-        active: Boolean,
+    active: Boolean,
    
     
 
