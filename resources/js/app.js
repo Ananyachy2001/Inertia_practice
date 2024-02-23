@@ -3,6 +3,7 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import NProgress from 'nprogress'
 import { router } from '@inertiajs/vue3'
 
+
 createInertiaApp({
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
