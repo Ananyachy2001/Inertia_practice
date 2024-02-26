@@ -10,23 +10,26 @@
                 Name
             </label>
             <input v-model="form.name" class="border border-gray-400 p-2 w-full" type="text" name="name" id="name" required>
+            <div v-if="$page.props.errors.name" v-text="$page.props.errors.name" class="text-red-500 text-xs mt-1"></div>
         </div>
         <div class="mb-6">
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="email">
                 Email
             </label>
             <input  v-model="form.email" class="border border-gray-400 p-2 w-full" type="email" name="email" id="email" required>
+            <div v-if="$page.props.errors.email" v-text="$page.props.errors.email" class="text-red-500 text-xs mt-1" ></div>
         </div>
         <div class="mb-6">
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="password">
                 Password
             </label>
             <input  v-model="form.password" class="border border-gray-400 p-2 w-full" type="password" name="password" id="password" required>
+            <div v-if="$page.props.errors.password" v-text="$page.props.errors.password" class="text-red-500 text-xs mt-1"></div>
         </div>
 
         <div class="mb-6">
 
-<button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500">Submit</button>
+<button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500" :disabled="form.processing">Submit</button>
         </div>
         
        </form>
@@ -34,18 +37,33 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
-import { router } from '@inertiajs/vue3'
+// import { reactive, ref} from 'vue';
+// import { router } from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3'
 
-let form =reactive({
+
+defineProps({
+    errors: Object
+});
+
+let form =useForm({
     name: '',
     email: '',
     password: '',
 
-})
+});
+
+
+setTimeout( () => {
+    form.reset();
+},3000)
+
+
+
 
 let submit = () => {
-    router.post('/users', form)
+    // processing.value = true;
+    form.post('/users')
 }
 
 </script>
