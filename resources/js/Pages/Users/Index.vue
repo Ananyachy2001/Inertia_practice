@@ -62,6 +62,7 @@ import Pagination from '../../Shared/Pagination.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { ref,watch } from 'vue';
 import { router } from '@inertiajs/vue3'
+import debounce from "lodash/debounce";
 
 
 let props = defineProps({
@@ -72,14 +73,15 @@ let props = defineProps({
 
 
 let search = ref(props.filters.search);
-watch(search, value => {
+watch(search, debounce (function (value) {
+    console.log('triggered')
 
     router.get('/users', { search: value },{
         preserveState: true,
         replace: true,
     } );
     // console.log("changed" + value);
-});
+},700));
 
 
 

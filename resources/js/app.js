@@ -33,10 +33,10 @@ resolve: name => {
 
 
 
-router.on('start', () => {
-    timeout = setTimeout(() => NProgress.start(), 1)
+// router.on('start', () => {
+//     timeout = setTimeout(() => NProgress.start(), 1)
 
-})
+// })
 router.on('finish', () => NProgress.done())
 
 router.on('progress', (event) => {
