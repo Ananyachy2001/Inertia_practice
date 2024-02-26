@@ -6,6 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     @vite('resources/js/app.js')
+    @vite('resources/css/app.css')
     @inertiaHead
   </head>
   <body>

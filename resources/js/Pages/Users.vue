@@ -5,8 +5,15 @@
 <Head title="Users" />
 
      
+    <div class="flex justify-between mb-6">
 
-        <h1 class="text-4xl font-bold">Users</h1>
+    <h1 class="text-4xl font-bold">Users</h1>
+
+    <input v-model="search"  type="text" placeholder="Search..." class="border px-2 rounded-lg">
+
+
+    </div>
+
 
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -39,7 +46,7 @@
     </div>
 
 <!-- //Pagination -->
-<Pagination :links="users.links" />
+<Pagination class="mt-6" :links="users.links" />
     
 </template>
 
@@ -47,10 +54,27 @@
 
 import Pagination from '../Shared/Pagination.vue';
 import { Head, Link } from '@inertiajs/vue3';
-defineProps({
+import { ref,watch } from 'vue';
+import { router } from '@inertiajs/vue3'
+
+
+let props = defineProps({
 
     users: Object,
+    filters: Object,
 })
+
+
+let search = ref(props.filters.search);
+watch(search, value => {
+
+    router.get('/users', { search: value },{
+        preserveState: true,
+        replace: true,
+    } );
+    // console.log("changed" + value);
+});
+
 
 
 </script>
