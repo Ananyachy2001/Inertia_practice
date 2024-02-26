@@ -37,17 +37,23 @@ Route::get('/users', function () {
         ->withQueryString()
             ->through(fn($user) => [
                 'id' => $user->id,
-                'name' => $user->name
+                'name' => $user->name,
+                'can' => [
+                    'edit' => Auth::user()->can('edit',$user)
+                ]
             ]),
         
-        'filters' =>Request::only(['search'])
+        'filters' =>Request::only(['search']),
+        'can' => [
+            'createUser' => Auth::user()->can('create', User::class)
+        ]
     ]);
 });
 
 
 Route::get('/users/create', function () {
     return inertia::render('Users/Create');
-});
+})->middleware('can:create,App\Models\User');
 
 
 Route::post('/users', function () {
