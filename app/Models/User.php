@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function setPasswordAttrubute($value){
+
+        $this->attributes['password'] = Hash::make($value);
+
+    }
 }

@@ -52,7 +52,7 @@
 
 <script setup>
 
-import Pagination from '../Shared/Pagination.vue';
+import Pagination from '../../Shared/Pagination.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { ref,watch } from 'vue';
 import { router } from '@inertiajs/vue3'
