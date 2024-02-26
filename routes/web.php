@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use inertia\inertia;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +22,13 @@ Route::get('/users', function () {
 
     // sleep(2);
 
+    // return User::paginate(10);
 
     return inertia::render('Users', [
-        'time' => now()->toTimeString(),
+        'users' => User::paginate(10)->through(fn($user) => [
+            'id' => $user->id,
+            'name' => $user->name
+        ])
     ]);
 });
 

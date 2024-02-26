@@ -1,17 +1,11 @@
-<script >
-// import { Head } from '@inertiajs/vue3'
 
-import Layout from '../Shared/Layout.vue';
-
-
-export default {
-    layout: Layout,
-
-}
-</script>
 
 <template>
     
+    <Head>
+        <title>Home</title>
+        <meta type="description" content="Information about the Home" head-key="description">
+    </Head>
 
     <h1 class="text-3xl ">Home</h1>
 
@@ -20,3 +14,8 @@ export default {
    
  
 </template>
+
+
+<script setup>
+import { Head } from '@inertiajs/vue3';
+</script>

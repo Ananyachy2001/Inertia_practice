@@ -8,6 +8,7 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
-        vue(),
+        vue(3),
+        "@babel/plugin-syntax-dynamic-import",
     ],
 });
